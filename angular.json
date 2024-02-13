@@ -94,6 +94,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "monster:build:production",
+              "serveTarget": "monster:serve:production"
+            },
+            "development": {
+              "buildTarget": "monster:build:development",
+              "serveTarget": "monster:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

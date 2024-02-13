@@ -1,0 +1,107 @@
+<div class="form-container">
+  <h2>Flight Info</h2>
+  <form [formGroup]="flightInfoForm" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="airline">Airline*</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="airline"
+        id="airline"
+      />
+
+      <div
+        *ngIf="
+          formControls['airline'].invalid && formControls['airline'].touched
+        "
+      >
+        Airline is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="arrivalDate">Arrival Date*</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="arrivalDate"
+        id="arrivalDate"
+      />
+
+      <div
+        *ngIf="
+          formControls['arrivalDate'].invalid &&
+          formControls['arrivalDate'].touched
+        "
+      >
+        Arrival Date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="arrivalTime">Arrival Time*</label>
+      <input
+        type="time"
+        class="form-control"
+        formControlName="arrivalTime"
+        id="arrivalTime"
+      />
+
+      <div
+        *ngIf="
+          formControls['arrivalTime'].invalid &&
+          formControls['arrivalTime'].touched
+        "
+      ></div>
+    </div>
+
+    <div class="form-group">
+      <label for="flightNumber">Flight Number*</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="flightNumber"
+        id="flightNumber"
+      />
+
+      <div
+        *ngIf="
+          formControls['flightNumber'].invalid &&
+          formControls['flightNumber'].touched
+        "
+      >
+        Flight Number is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numOfGuests">Number of Guests*</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="numOfGuests"
+        id="numOfGuests"
+      />
+
+      <div
+        *ngIf="
+          formControls['numOfGuests'].invalid &&
+          formControls['numOfGuests'].touched
+        "
+      >
+        Number of Guests is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="comments">Comments</label>
+      <textarea
+        class="form-control"
+        formControlName="comments"
+        id="comments"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

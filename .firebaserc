@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "monster-yash": {
+      "hosting": {
+        "monster": [
+          "monster-yash"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "monster-yash"
+  }
+}
