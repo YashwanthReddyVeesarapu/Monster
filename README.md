@@ -1,6 +1,6 @@
 This application is created by Yashwanth Veesarapu for demonstration purposes.
 
-# Features
+The application is hosted on Firebase. You can access it by clicking [here](https://monster-yash.web.app/).
 
 # Flight Information Application
 
