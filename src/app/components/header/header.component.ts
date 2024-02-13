@@ -15,12 +15,15 @@ export class HeaderComponent {
   user!: User;
   isAuthenticated: boolean;
   constructor(private authService: AuthService, private router: Router) {
+    // Check if user is authenticated
     this.isAuthenticated = this.authService.isAuthenticated();
     authService.user.subscribe((user) => {
       this.user = user!;
       this.isAuthenticated = user ? true : false;
     });
   }
+
+  // Logout
   logout(): void {
     console.log('Logging out');
     this.authService.signOut();

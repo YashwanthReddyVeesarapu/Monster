@@ -1,27 +1,62 @@
-# Monster
+This application is created by Yashwanth Veesarapu for demonstration purposes.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
+# Features
 
-## Development server
+# Flight Information Application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## About
 
-## Code scaffolding
+This application, developed by Yashwanth Veesarapu, is a demonstration project featuring various functionalities related to flight information, user authentication, and Firebase hosting.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+1. **Flight Info Form:**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   - Allows users to input retrieve flight information.
 
-## Running unit tests
+2. **Login Form:**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   - Implements a secure login system to control access to certain features.
 
-## Running end-to-end tests
+3. **Firebase Authentication:**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   - Leverages Firebase Authentication for a secure user authentication system.
 
-## Further help
+4. **Firebase Hosting:**
+   - The application is hosted on Firebase, ensuring global accessibility.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Technologies Used
+
+- **Angular:**
+  - The frontend is developed using the Angular framework.
+
+## Login Credentials
+
+To access the application, use the following login credentials:
+
+- **Username:** admin@monsterrg.com
+- **Password:** monster
+
+## Getting Started
+
+Follow these steps to run the application locally:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/YashwanthVeesarapu/Monster.git
+
+   ```
+
+2. **Install Dependencies:**
+
+   ```bash
+   cd monster
+   npm install
+
+   ```
+
+3. **Run the application:**
+   ```bash
+   ng serve
+   ```

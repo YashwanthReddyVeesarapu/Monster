@@ -18,12 +18,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './flight-info-form.component.scss',
 })
 export class FlightInfoFormComponent {
-  flightInfoForm: FormGroup;
+  flightInfoForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {
+    this.initForm();
+  }
+
+  //Initialize form
+  initForm(): void {
     this.flightInfoForm = this.formBuilder.group({
       airline: ['', Validators.required],
       arrivalDate: ['', Validators.required],
@@ -34,10 +39,12 @@ export class FlightInfoFormComponent {
     });
   }
 
+  // Get form controls
   get formControls() {
     return this.flightInfoForm.controls;
   }
 
+  // Flight info form submission
   onSubmit(): void {
     if (this.flightInfoForm.valid) {
       if (this.authService.isAuthenticated()) {

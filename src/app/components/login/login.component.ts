@@ -17,19 +17,23 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
+    if (authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
+    this.initForm();
+  }
+
+  initForm(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-    if (authService.isAuthenticated()) {
-      this.router.navigate(['/']);
-    }
   }
 
   get formControls() {
