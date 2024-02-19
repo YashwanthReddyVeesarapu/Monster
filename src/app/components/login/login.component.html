@@ -1,45 +1,70 @@
-<div class="form-container">
-  <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="username"
-        placeholder="Username"
-        id="username"
-      />
-      <div
-        *ngIf="
-          formControls['username'].invalid && formControls['username'].touched
-        "
-      >
-        Enter a valid email address.
+<div class="login">
+  <div class="form-container">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="email"
+          id="email"
+        />
+        <div
+          *ngIf="formControls['email'].invalid && formControls['email'].touched"
+        >
+          Enter a valid email address.
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        placeholder="Password"
-        formControlName="password"
-        id="password"
-      />
-      <div
-        *ngIf="
-          formControls['password'].invalid && formControls['password'].touched
-        "
-      >
-        Password is required and must be at least 6 characters.
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          id="password"
+        />
+        <div
+          *ngIf="
+            formControls['password'].invalid && formControls['password'].touched
+          "
+        >
+          Password is required and must be at least 6 characters.
+        </div>
       </div>
-    </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
-    <p>
-      Login is required to access the application. If you don't have an account,
-      please contact the administrator.
-    </p>
-  </form>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="btn btn-primary"
+        disabled="{{ !loginForm.valid }}"
+        class="login-btn"
+      >
+        <span *ngIf="loading1"><mat-spinner diameter="20"></mat-spinner> </span>
+        <span *ngIf="!loading1">Login</span>
+      </button>
+      <br />
+      <mat-divider></mat-divider>
+      <button
+        mat-button
+        type="button"
+        (click)="googleSignIn()"
+        class="btn btn-primary"
+        class="google-login-btn"
+      >
+        <span *ngIf="loading2"
+          ><mat-spinner
+            diameter="20"
+            color="white"
+            class="loader"
+          ></mat-spinner>
+        </span>
+        <span *ngIf="!loading2">
+          <img src="/assets/google.webp" alt="google logo" />
+          Login with Google
+        </span>
+      </button>
+    </form>
+  </div>
 </div>

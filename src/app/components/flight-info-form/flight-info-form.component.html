@@ -1,107 +1,152 @@
-<div class="form-container">
-  <h2>Flight Info</h2>
-  <form [formGroup]="flightInfoForm" (submit)="onSubmit()">
-    <div class="form-group">
-      <label for="airline">Airline*</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="airline"
-        id="airline"
-      />
+<div *ngIf="submitted" class="thankyou">
+  <h1>Thank you for submitting your flight information!</h1>
+  <p>
+    We will be in touch with you shortly to confirm your reservation and provide
+    you with more information.
+  </p>
+  <button
+    class="flight-submit-btn"
+    mat-raised-button
+    color="primary"
+    (click)="resetForm()"
+  >
+    Submit Another Flight
+  </button>
+</div>
 
-      <div
-        *ngIf="
-          formControls['airline'].invalid && formControls['airline'].touched
-        "
-      >
-        Airline is required.
+<div *ngIf="!submitted" class="flight-info">
+  <h1>Flight Info</h1>
+  <div class="form-container">
+    <form [formGroup]="flightInfoForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="airline">Airline*</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="airline"
+          id="airline"
+        />
+
+        <div
+          *ngIf="
+            formControls['airline'].hasError('required') &&
+            formControls['airline'].touched
+          "
+        >
+          Airline is required.
+        </div>
+
+        <div
+          *ngIf="
+            formControls['airline'].hasError('pattern') &&
+            formControls['airline'].touched
+          "
+        >
+          Invalid Airline Name.
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="arrivalDate">Arrival Date*</label>
-      <input
-        type="date"
-        class="form-control"
-        formControlName="arrivalDate"
-        id="arrivalDate"
-      />
+      <div class="form-group">
+        <label for="arrivalDate">Arrival Date*</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="arrivalDate"
+          id="arrivalDate"
+        />
 
-      <div
-        *ngIf="
-          formControls['arrivalDate'].invalid &&
-          formControls['arrivalDate'].touched
-        "
-      >
-        Arrival Date is required.
+        <div
+          *ngIf="
+            formControls['arrivalDate'].invalid &&
+            formControls['arrivalDate'].touched
+          "
+        >
+          Arrival Date is required.
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="arrivalTime">Arrival Time*</label>
-      <input
-        type="time"
-        class="form-control"
-        formControlName="arrivalTime"
-        id="arrivalTime"
-      />
+      <div class="form-group">
+        <label for="arrivalTime">Arrival Time*</label>
+        <input
+          type="time"
+          class="form-control"
+          formControlName="arrivalTime"
+          id="arrivalTime"
+        />
 
-      <div
-        *ngIf="
-          formControls['arrivalTime'].invalid &&
-          formControls['arrivalTime'].touched
-        "
-      ></div>
-    </div>
-
-    <div class="form-group">
-      <label for="flightNumber">Flight Number*</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="flightNumber"
-        id="flightNumber"
-      />
-
-      <div
-        *ngIf="
-          formControls['flightNumber'].invalid &&
-          formControls['flightNumber'].touched
-        "
-      >
-        Flight Number is required.
+        <div
+          *ngIf="
+            formControls['arrivalTime'].hasError('required') &&
+            formControls['arrivalTime'].touched
+          "
+        ></div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="numOfGuests">Number of Guests*</label>
-      <input
-        type="number"
-        class="form-control"
-        formControlName="numOfGuests"
-        id="numOfGuests"
-      />
+      <div class="form-group">
+        <label for="flightNumber">Flight Number*</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="flightNumber"
+          id="flightNumber"
+        />
 
-      <div
-        *ngIf="
-          formControls['numOfGuests'].invalid &&
-          formControls['numOfGuests'].touched
-        "
-      >
-        Number of Guests is required.
+        <div
+          *ngIf="
+            formControls['flightNumber'].hasError('required') &&
+            formControls['flightNumber'].touched
+          "
+        >
+          Flight Number is required.
+        </div>
+
+        <div
+          *ngIf="
+            formControls['flightNumber'].hasError('pattern') &&
+            formControls['flightNumber'].touched
+          "
+        >
+          Invalid Flight Number.
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="comments">Comments</label>
-      <textarea
-        class="form-control"
-        formControlName="comments"
-        id="comments"
-      ></textarea>
-    </div>
+      <div class="form-group">
+        <label for="numOfGuests">Number of Guests*</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="numOfGuests"
+          id="numOfGuests"
+        />
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+        <div
+          *ngIf="
+            formControls['numOfGuests'].invalid &&
+            formControls['numOfGuests'].touched
+          "
+        >
+          Number of Guests is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comments">Comments</label>
+        <textarea
+          class="form-control"
+          formControlName="comments"
+          id="comments"
+        ></textarea>
+      </div>
+
+      <button
+        class="flight-submit-btn"
+        [disabled]="!flightInfoForm.valid || loading"
+        mat-raised-button
+        type="submit"
+      >
+        <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+        <span *ngIf="!loading"> Submit</span>
+      </button>
+    </form>
+  </div>
 </div>

@@ -1,34 +1,70 @@
-.form-container {
+.login {
   display: flex;
-  width: 100%;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  padding: 20px;
 
-  form {
+  .form-container {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    width: 400px;
-    label {
-      display: none;
+    width: 500px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+
+      .form-group {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          border: 1px solid #e0e0e0;
+          border-radius: 5px;
+          margin-top: 10px;
+          padding: 10px 10px;
+        }
+        div {
+          color: var(--error);
+          font-size: 14px;
+        }
+      }
     }
-    input {
-      width: 100%;
-      border: 1px solid #e0e0e0;
-      border-radius: 5px;
-      margin-top: 10px;
-      padding: 10px 0;
+
+    .login-btn {
+      margin-top: 20px;
+      padding: 20px 0;
+      background-color: var(--primary);
+      span {
+        color: white;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: var(--text-disabled);
+        span {
+          color: var(--text-disabled);
+        }
+      }
     }
-    button {
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
-    }
-    .form-group {
-      margin-top: 10px;
-      div {
-        color: #d9534f;
-        font-size: 14px;
+
+    .google-login-btn {
+      background-color: var(--primary);
+      margin-top: 20px;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        display: flex;
+        color: white;
+      }
+
+      img {
+        height: 20px;
+        padding: 0 10px 0 0;
       }
     }
   }

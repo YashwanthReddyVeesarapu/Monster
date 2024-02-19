@@ -1,9 +1,51 @@
 <header>
-  <h1>Monster | Yash</h1>
-  <nav>
-    <a *ngIf="isAuthenticated" routerLink="/">Home</a>
-    <a routerLink="/about">About</a>
-    <a *ngIf="!isAuthenticated" routerLink="/login">Login</a>
-    <button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
-  </nav>
+  <h1>MonsterRG</h1>
+
+  <div>
+    <button
+      mat-fab
+      color="primary"
+      class="dark-mode-toggle"
+      aria-label="Toggle Dark Mode"
+      (click)="toggleDarkMode()"
+      title="Toggle Dark Mode"
+    >
+      <mat-icon>{{ darkMode ? "wb_sunny" : "nights_stay" }}</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Menu"
+      title="Menu"
+      class="menu-icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" id="menu">
+      <button mat-menu-item routerLink="/about">About</button>
+      <button *ngIf="!user" mat-menu-item routerLink="/login">Login</button>
+      <button *ngIf="user" mat-menu-item (click)="logout()" title="Logout">
+        Logout
+      </button>
+    </mat-menu>
+
+    <nav>
+      <a *ngIf="user" routerLink="/">Home</a>
+      <a routerLink="/about">About</a>
+      <a *ngIf="!user" routerLink="/login">Login</a>
+
+      <button
+        *ngIf="user"
+        mat-fab
+        color="warn"
+        aria-label="Logout"
+        (click)="logout()"
+        title="Logout"
+      >
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </nav>
+  </div>
 </header>

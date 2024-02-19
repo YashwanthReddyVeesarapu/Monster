@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { FlightInfoFormComponent } from './components/flight-info-form/flight-info-form.component';
-import { AuthGuard } from './AuthGuard';
 import { AboutComponent } from './components/about/about.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: FlightInfoFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'login',
